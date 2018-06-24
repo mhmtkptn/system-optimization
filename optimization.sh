@@ -32,16 +32,18 @@ function cleanProcess() {
 
     apt-get -y purge unity-lens-shopping
     apt-get -y purge unity-webapps-common
-    apt-get -y purge apturl
     apt-get -y purge zeitgeist
     apt-get -y purge zeitgeist-datahub
     apt-get -y purge zeitgeist-core
     apt-get -y purge zeitgeist-extension-fts
+    apt-get -y purge apturl
 
+    apt-get clean
     apt-get -y autoclean &&
     apt-get -y autoremove
 
     dpkg --list | grep linux-image | awk '{ print $2 }' | sort -V | sed -n "/$(uname -r)/q;p" | xargs  apt-get -y purge
+
 
     sync; echo 3 > /proc/sys/vm/drop_caches
 
