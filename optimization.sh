@@ -15,9 +15,21 @@ function checkPrivilage() {
         echo Lutfen root olarak scripti çalıştırın !!!
     fi
 
-    updateProcess
+    changeAptSettingsAndSourceList
 }
 
+function changeAptSettingsAndSourceList() {
+
+	echo 'Acquire::ForceIPv4 "true";' > /etc/apt/apt.conf.d/99force-ipv4 \
+	\
+    && echo "deb mirror://mirrors.ubuntu.com/mirrors.txt trusty main restricted universe multiverse" > /etc/apt/sources.list \
+    && echo "deb mirror://mirrors.ubuntu.com/mirrors.txt trusty-security main restricted universe multiverse" >> /etc/apt/sources.list \
+    && echo "deb mirror://mirrors.ubuntu.com/mirrors.txt trusty-updates main restricted universe multiverse" >> /etc/apt/sources.list \
+    && echo "deb mirror://mirrors.ubuntu.com/mirrors.txt trusty-proposed main restricted universe multiverse" >> /etc/apt/sources.list \
+    && echo "deb mirror://mirrors.ubuntu.com/mirrors.txt trusty-backports main restricted universe multiverse" >> /etc/apt/sources.list
+
+    updateProcess
+}
 
 function updateProcess() {
 
