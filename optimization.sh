@@ -56,7 +56,6 @@ function cleanProcess() {
 
     dpkg --list | grep linux-image | awk '{ print $2 }' | sort -V | sed -n "/$(uname -r)/q;p" | xargs  apt-get -y purge
 
-
     sync; echo 3 > /proc/sys/vm/drop_caches
 
     /sbin/fstrim --all || true
