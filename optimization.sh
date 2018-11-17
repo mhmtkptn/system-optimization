@@ -42,13 +42,14 @@ function updateProcess() {
 
 function cleanProcess() {
 
-    apt-get -y purge unity-lens-shopping
-    apt-get -y purge unity-webapps-common
-    apt-get -y purge zeitgeist
-    apt-get -y purge zeitgeist-datahub
-    apt-get -y purge zeitgeist-core
-    apt-get -y purge zeitgeist-extension-fts
-    apt-get -y purge apturl
+    apt-get -y purge \
+            unity-lens-shopping \
+            unity-webapps-common \
+            zeitgeist \
+            zeitgeist-datahub \
+            zeitgeist-core \
+            zeitgeist-extension-fts \
+            apturl
 
     apt-get clean
     apt-get -y autoclean &&
